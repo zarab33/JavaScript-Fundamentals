@@ -16,3 +16,5 @@ console.log(fizzBuzz(8));
 console.log(fizzBuzz(15));
 console.log(fizzBuzz(18));
 console.log(fizzBuzz(20));
+
+module.exports = fizzbuzzUntil;
