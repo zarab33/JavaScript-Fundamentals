@@ -15,12 +15,15 @@ const candies = [
 
 ];
 
-const searchCandies = (candies, searchString, maxPrice) => {
-  return candies
-    .filter(candy => candy.name.toLowerCase().startsWith(searchString.toLowerCase()))
-    .filter(candy => candy.price < maxPrice)
-    .map(candy => candy.name);
-}
+const searchCandies = (str, maxPrice) => {
+  const sorted = candies.filter(
+    (i) =>
+      i.name.toLowerCase().startsWith(str.toLowerCase()) && i.price < maxPrice
+  );
+
+  return sorted.map((i) => i.name);
+};
+
 
 module.exports = searchCandies;
 
