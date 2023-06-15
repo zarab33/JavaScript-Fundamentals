@@ -12,13 +12,15 @@ const candies = [
   { name: 'Raffaello', price: 7.99 },
   { name: 'Gummi bears', price: 10.99 },
   { name: 'Fraise Tagada', price: 5.99 }
+
 ];
 
-const searchCandies = (searchString, maxPrice) => {
+const searchCandies = (candies, searchString, maxPrice) => {
   return candies
     .filter(candy => candy.name.toLowerCase().startsWith(searchString.toLowerCase()))
     .filter(candy => candy.price < maxPrice)
     .map(candy => candy.name);
 }
 
-export default searchCandies;
+module.exports = searchCandies;
+

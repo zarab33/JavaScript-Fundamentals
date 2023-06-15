@@ -1,4 +1,4 @@
-const searchCandies = require('/searchCandies');
+const searchCandies = require('./searchCandies');
 
 describe('searchCandies', () => {
     it('search candies by first 2 character Ma and price below 10', () => {
