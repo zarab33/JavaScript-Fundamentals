@@ -1,6 +1,3 @@
-const searchCandies = require('./searchCandies');
-
-describe("searchCandies", () => {
  const searchCandies = require('./searchCandies');
 
 describe('searchCandies', () => {
@@ -23,6 +20,4 @@ describe('searchCandies', () => {
     it("also works with lower case search string", () => {
     expect(searchCandies("s", 4)).toEqual(["Skitties", "Skittles"]);
   });
-});
-
 });
