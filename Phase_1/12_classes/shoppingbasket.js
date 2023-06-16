@@ -20,5 +20,5 @@ class ShoppingBasket {
 //   console.log(basket.getTotalPrice());
 //   console.log(basket.addItem());
 //   console.log(basket.addItem(new Candy('Skittle', 3.99)));
-  module.export = Candy;
-  module.export = ShoppingBasket;
+  module.exports = Candy;
+  module.exports = ShoppingBasket;
