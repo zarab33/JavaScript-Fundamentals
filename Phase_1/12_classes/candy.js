@@ -15,4 +15,4 @@ class Candy {
     console.log(candy.getName());
     console.log(candy.getPrice());
 
-    module.export = Candy;
+    module.exports = Candy;
