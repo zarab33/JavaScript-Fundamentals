@@ -1,52 +1,29 @@
-const ShoppingBasket = require('./ShoppingBasket');
-const Candy = require('./Candies');
+const ShoppingBasket = require('./ShoppingBasket')
 
-jest.mock('./ShoppingBasket');
-
-describe('Shopping Basket', () => {
-    beforeEach(() => {
-    // Clear all instances and calls to constructor and all methods:
-    ShoppingBasket.mockClear();
-    });
-
-it('adds an item to the shopping basket', () => {
-  const mockShoppingBasket = new ShoppingBasket();
-
-  mockShoppingBasket.addItem.mockImplementation(() => 'Mars');
-  mockShoppingBasket.getTotalPrice.mockImplementation(() => 4.99);
-
-  expect(mockShoppingBasket.addItem()).toBe('Mars');
-  expect(mockShoppingBasket.getTotalPrice()).toBe(4.99);
-});
-
-  it('calculates the total price correctly for two items', () => {
-    const mockShoppingBasket = new ShoppingBasket();
-
-    const candy1 = new Candy('Mars', 4.99);
-    const candy2 = new Candy('Skittles', 3.99);
-
-    const basket = [];
-
-    mockShoppingBasket.addItem.mockImplementation((candy) => {
-      basket.push(candy);
-    });
-
-    mockShoppingBasket.getTotalPrice.mockImplementation(() => {
-      return basket.reduce((total, candy) => total + candy.getPrice(), 0);
-    });
-
-    mockShoppingBasket.addItem(candy1);
-    mockShoppingBasket.addItem(candy2);
-
-    const totalPrice = candy1.getPrice() + candy2.getPrice();
-
-    expect(mockShoppingBasket.getTotalPrice()).toBe(totalPrice);
+describe("mocking tests", () => {
+  it("gets the price for one mocked candy", () => {
+    const CandyDouble = { getName: () => "Mars", getPrice: () => 4.99 };
+    const new_basket = new ShoppingBasket();
+    new_basket.addItem(CandyDouble);
+    expect(new_basket.getTotalPrice()).toBe(4.99);
   });
 
-   it("gets total price and applies discount", () => {
-  const mockShoppingBasket = new ShoppingBasket();
+  it("gets the total price for two mocked candies", () => {
+    const CandyDouble = { getName: () => "Skittle", getPrice: () => 3.99 };
+    const CandyDouble2 = { getName: () => "Mars", getPrice: () => 4.99 };
+    const new_basket = new ShoppingBasket();
+    new_basket.addItem(CandyDouble);
+    new_basket.addItem(CandyDouble2);
+    expect(new_basket.getTotalPrice()).toBe(8.98);
+  });
 
-  expect(mockShoppingBasket.getTotalPrice()).toEqual(discountedPrice);
-});
-
+  it("gets the discounted price for two mocked candies", () => {
+    const CandyDouble = { getName: () => "Mars", getPrice: () => 4.99 };
+    const CandyDouble2 = { getName: () => "Skittle", getPrice: () => 3.99 };
+    const new_basket = new ShoppingBasket();
+    new_basket.addItem(CandyDouble);
+    new_basket.addItem(CandyDouble2);
+    new_basket.applyDiscount(2.0);
+    expect(new_basket.getTotalPrice()).toBe(6.98);
+  });
 });
