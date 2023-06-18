@@ -9,25 +9,15 @@ describe('Shopping Basket', () => {
     ShoppingBasket.mockClear();
     });
 
-  it('adds an item to the shopping basket', () => {
-    const mockShoppingBasket = new ShoppingBasket('Mars', 4.99);
+it('adds an item to the shopping basket', () => {
+  const mockShoppingBasket = new ShoppingBasket();
 
-    mockShoppingBasket.addItem.mockImplementation(() => 'Mars');
-    mockShoppingBasket.getTotalPrice.mockImplementation(() => 4.99);
+  mockShoppingBasket.addItem.mockImplementation(() => 'Mars');
+  mockShoppingBasket.getTotalPrice.mockImplementation(() => 4.99);
 
-    expect(mockShoppingBasket.addItem()).toBe('Mars');
-    expect(mockShoppingBasket.getTotalPrice()).toBe(4.99);
-  });
-
-     const ShoppingBasket = require('./ShoppingBasket');
-const Candy = require('./Candies');
-
-jest.mock('./ShoppingBasket');
-
-describe('Shopping Basket', () => {
-  beforeEach(() => {
-    ShoppingBasket.mockClear();
-  });
+  expect(mockShoppingBasket.addItem()).toBe('Mars');
+  expect(mockShoppingBasket.getTotalPrice()).toBe(4.99);
+});
 
   it('calculates the total price correctly for two items', () => {
     const mockShoppingBasket = new ShoppingBasket();
@@ -52,6 +42,11 @@ describe('Shopping Basket', () => {
 
     expect(mockShoppingBasket.getTotalPrice()).toBe(totalPrice);
   });
+
+   it("gets total price and applies discount", () => {
+  const mockShoppingBasket = new ShoppingBasket();
+
+  expect(mockShoppingBasket.getTotalPrice()).toEqual(discountedPrice);
 });
 
 });

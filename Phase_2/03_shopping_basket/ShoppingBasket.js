@@ -1,18 +1,27 @@
 const Candy = require('./Candies');
 
 class ShoppingBasket {
-    constructor() {
-      this.basket = [];
-    }
-
-    getTotalPrice() {
-        return this.basket.map(basket => basket.getPrice()).reduce((total, price) => total + price, 0);
-      }
-
-    addItem(candy) {
-      this.basket.push(candy);
-    }
+  constructor() {
+    this.basket = [];
+    this.discount = 0;
   }
 
-  module.exports = Candy;
-  module.exports = ShoppingBasket;
+  applyDiscount(discount) {
+    this.discount = discount;
+  }
+
+  getTotalPrice() {
+    let totalPrice = 0;
+    this.basket.forEach((candy) => {
+      totalPrice += candy.getPrice();
+    });
+
+    return totalPrice - this.discount;
+  }
+
+  addItem(candy) {
+    this.basket.push(candy);
+  }
+}
+
+module.exports = ShoppingBasket;
