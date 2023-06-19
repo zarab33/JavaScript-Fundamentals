@@ -25,4 +25,10 @@ describe('Thermostat', () => {
     thermostat.down()
     expect(thermostat.getTemperature()).toBe(19);
     })
+
+    it('should turn powersaving mode to true, max temperture is 25 degrees', () => {
+    const thermostat = new Thermostat();
+    thermostat.down()
+    expect(thermostat.getTemperature()).toBe(19);
+    })
 });
