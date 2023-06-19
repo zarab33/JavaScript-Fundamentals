@@ -11,7 +11,7 @@ up() {
     return this.temperature += 1;
 }
 down() {
-    
+    return this.temperature -= 1;
 }
 setPowersavingMode() {
 
