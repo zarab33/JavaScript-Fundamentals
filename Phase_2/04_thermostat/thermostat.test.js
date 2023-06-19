@@ -26,9 +26,19 @@ describe('Thermostat', () => {
     expect(thermostat.getTemperature()).toBe(19);
     })
 
-    it('should turn powersaving mode to true, max temperture is 25 degrees', () => {
+   it('Increases the temperature to the maximum of 25 when Power Saving Mode is on', () => {
     const thermostat = new Thermostat();
-    thermostat.down()
-    expect(thermostat.getTemperature()).toBe(19);
-    })
+    thermostat.setPowerSavingMode(true);
+    for (let i = 0; i < 5; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.getTemperature()).toBe(25);
+  });
+
+  it('Resets the temperature back to 20 degrees', () => {
+    const thermostat = new Thermostat();
+    thermostat.up(); // Increase temperature to 21
+    thermostat.reset(); // Reset temperature
+    expect(thermostat.getTemperature()).toBe(20);
+  });
 });
